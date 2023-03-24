@@ -1,0 +1,51 @@
+# @formatter:off
+[dev]
+command = "yarn dev" # Command to start your dev server
+targetPort = 8888 # The port for your application server, framework or site generator
+port = 5555 # The port that the netlify dev will be accessible on
+framework = "#custom"
+publish = "public" # The path to your static content folder
+##  jwtRolePath = "app_metadata.authorization.roles" # Object path we should look for role values for JWT based redirects
+##  autoLaunch = true # a Boolean value that determines if Netlify Dev launches the local server address in your browser
+functions = "netlify/functions"
+autoLaunch = false
+NODE_VERSION = "16.13.0"
+
+[functions]
+external_node_modules = ["keyv"]
+
+[build]
+NODE_VERSION = "16.13.0"
+publish = "dist"
+command = "yarn build"
+functions = "netlify/functions"
+
+[[redirects]]
+from = "/api/*"
+to = "/.netlify/functions/:splat"
+status = 200
+#query = { path = ":path" } # apply this rule for /?path=example
+#force = true
+
+
+## The following redirect is intended for use with most SPA's that handles routing internally.
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
+
+[[headers]]
+for = "/*"
+[headers.values]
+X-Frame-Options = "DENY"
+X-XSS-Protection = "1; mode=block"
+Referrer-Policy = "no-referrer"
+X-Content-Type-Options = "nosniff"
+
+[[headers]]
+for = "/*.css*"
+[headers.values]
+Content-Type = "text/css; charset=UTF-8"
+
+[[plugins]]
+package = "netlify-plugin-image-optim"

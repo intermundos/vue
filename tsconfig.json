@@ -1,0 +1,68 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "module": "ESNext",
+    "target": "es2020",
+    "lib": [
+      "DOM",
+      "ESNext"
+    ],
+    "strict": true,
+    "allowJs": true,
+    "esModuleInterop": true,
+    "incremental": false,
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "noUnusedLocals": true,
+    "noImplicitAny": false,
+    "noImplicitThis": false,
+    "forceConsistentCasingInFileNames": true,
+    "noUncheckedIndexedAccess": true,
+    "types": [
+      "vite/client",
+      "node"
+    ],
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+      "@config/*": [
+        "config/*"
+      ],
+      "@assets/*": [
+        "src/assets/*"
+      ],
+      "@core/*": [
+        "src/core/*"
+      ],
+      "@utils/*": [
+        "src/core/utils/*"
+      ],
+      "@modules/*": [
+        "src/core/modules/*"
+      ],
+      "@ui/*": [
+        "src/ui/*"
+      ],
+      "@components/*": [
+        "src/ui/components/*"
+      ],
+      "@views/*": [
+        "src/ui/views/*"
+      ],
+      "@layouts/*": [
+        "src/ui/layouts/*"
+      ]
+    }
+  },
+  "include": [
+    "./src",
+    "./types"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules",
+    "cypress"
+  ]
+}
