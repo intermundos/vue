@@ -2,7 +2,7 @@ import '@assets/styles/main.scss'
 import App        from '@/App.vue'
 import { router } from '@core/router/router'
 
-async function bootstrap( app: App ) {
+async function bootstrap( app: typeof App ) {
 
     app.config.devtools = import.meta.env.DEV // Vue devtools enable
 

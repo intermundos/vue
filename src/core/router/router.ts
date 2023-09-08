@@ -1,22 +1,30 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import type { RouteRecordRaw }            from 'vue-router'
 
 const appLayout = () => import( '@ui/layouts/app.layout.vue' )
 
-const routes = [
+const routes: RouteRecordRaw[] = [
 
     {
         path: '/',
-        redirect: '/summary'
-    },
-
-    {
-        path: '/summary',
         component: appLayout,
         children: [
             {
                 path: '',
-                name: 'summary',
-                component: () => import('@views/summary/summary.view.vue'),
+                name: 'home',
+                component: () => import('@views/home/home.view.vue'),
+            }
+        ]
+    },
+
+    {
+        path: '/other',
+        component: appLayout,
+        children: [
+            {
+                path: '',
+                name: 'other',
+                component: () => import('@views/other/other.view.vue'),
             }
         ]
     },
@@ -26,26 +34,25 @@ const routes = [
     {
         path: '/:pathMatch(.*)*',
         name: 'not-found',
-        // component: () => import( `@views/service-views/404.vue` )
+        component: () => import( '@views/service-views/404.vue')
     },
 ]
 
 const router = createRouter( {
     history: createWebHistory(),
-    // @ts-ignore
     routes,
-    // scrollBehavior( to, from, savedPosition ) {
-    //     if ( savedPosition ) {
-    //         return savedPosition
-    //     } else {
-    //         return { top: 0 }
-    //     }
-    // }
+    scrollBehavior( to, from, savedPosition ) {
+        if ( savedPosition ) {
+            return savedPosition
+        } else {
+            return { top: 0 }
+        }
+    }
 } )
 
-// router.afterEach( ( to, from ) => {
-//     document.body.classList.add( to?.name as string )
-//     document.body.classList.remove( from?.name as string )
-// } )
+router.afterEach( ( to, from ) => {
+    document.body.classList.add( to?.name as string )
+    document.body.classList.remove( from?.name as string )
+} )
 
 export { router }

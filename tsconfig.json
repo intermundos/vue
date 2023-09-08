@@ -20,8 +20,9 @@
     "forceConsistentCasingInFileNames": true,
     "noUncheckedIndexedAccess": true,
     "types": [
-      "vite/client",
-      "node"
+      "node",
+      "@types/node",
+      "vite/client"
     ],
     "paths": {
       "@/*": [
@@ -39,9 +40,6 @@
       "@utils/*": [
         "src/core/utils/*"
       ],
-      "@modules/*": [
-        "src/core/modules/*"
-      ],
       "@ui/*": [
         "src/ui/*"
       ],
@@ -53,6 +51,9 @@
       ],
       "@layouts/*": [
         "src/ui/layouts/*"
+      ],
+      "@domain/*": [
+        "src/domain/*"
       ]
     }
   },

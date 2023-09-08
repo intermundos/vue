@@ -15,7 +15,7 @@
         </router-view>
 
         <footer>
-            2023 @ ASM
+            2023 @ Anton
         </footer>
 
     </div>

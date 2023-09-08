@@ -6,5 +6,6 @@ module.exports = {
   preflight: true,
   darkMode: 'class',
   // important: true,
-  theme: {}
+  theme: {},
+  plugins: [ require( 'daisyui' ) ],
 }
